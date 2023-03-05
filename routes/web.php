@@ -26,3 +26,15 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+    'isAdmin'
+])->group(function () {
+    Route::get('/deneme', function () {
+        return 'middleware test';
+    });
+});
