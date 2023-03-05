@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Admin\QuizController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,7 +33,5 @@ Route::middleware([
 Route::middleware([ 'auth:sanctum', config('jetstream.auth_session'), 'verified', 'isAdmin' ])
     ->prefix('admin')
     ->group(function () {
-        Route::get('/deneme', function () {
-            return 'middleware test';
-        });
+        Route::resource('/quizzes', QuizController::class);
     });

@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
             'name' => 'Görkem Bayraktar',
             'email' => 'byrktr@gmail.com',
             'email_verified_at' => now(),
-            'password' => '$2y$10$CMYuHa1Kwb3sUWYiKMTkdeZ0LS0KNgwJhCAlrJ/sFr3xOGC0Irwb.', // password
+            'password' => '$2y$10$OtNHTiWx2b70Rdpgkiies.usjNxiRtl5BUgRUmt7Qq4iL4yARNNUa', // tester123
             'two_factor_secret' => null,
             'type' => 'admin',
             'two_factor_recovery_codes' => null,
