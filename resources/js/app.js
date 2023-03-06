@@ -1,5 +1,5 @@
 import './bootstrap';
-
+import 'jquery';
 
 import 'bootstrap-icons/font/bootstrap-icons.css'
 
@@ -12,3 +12,8 @@ window.Alpine = Alpine;
 Alpine.plugin(focus);
 
 Alpine.start();
+
+import $ from 'jquery';
+
+window.jQuery = $;
+window.$ = $;

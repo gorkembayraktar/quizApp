@@ -20,7 +20,7 @@
                   <tr>
                     <th scope="row">{{ $quiz->title }}</th>
                     <td>{{ $quiz->status }}</td>
-                    <td>{{ $quiz->fineshed_at }}</td>
+                    <td>{{ $quiz->finished_at }}</td>
                     <td>
                             <a href="" class="btn btn-sm btn-primary"><i class="bi bi-pencil"></i></a>
                             <a href="" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></a>
