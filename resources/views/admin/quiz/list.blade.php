@@ -6,6 +6,7 @@
             
             <a href="{{  route( 'quizzes.create' ) }}" class="btn btn-sm btn-primary">Quiz Oluştur <i class="bi bi-plus"></i></a>
             
+            
             <table class="table">
                 <thead>
                   <tr>
@@ -23,7 +24,7 @@
                     <td>{{ $quiz->finished_at }}</td>
                     <td>
                             <a href="{{ route('quizzes.edit', $quiz->id) }}" class="btn btn-sm btn-primary"><i class="bi bi-pencil"></i></a>
-                            <a href="" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></a>
+                            <a href="{{ route('quizzes.destroy', $quiz->id) }}" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></a>
                     </td>
                   </tr>
                   @endforeach
