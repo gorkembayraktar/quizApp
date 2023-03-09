@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Quiz;
 
 use App\Http\Requests\QuizCreateRequest;
+use App\Http\Requests\QuizUpdateRequest;
 
 
 class QuizController extends Controller
@@ -16,7 +17,7 @@ class QuizController extends Controller
      */
     public function index()
     {
-        $quizzes = Quiz::paginate(5);
+        $quizzes = Quiz::orderBy('id', 'desc')->paginate(5);
         return  view('admin.quiz.list', compact('quizzes'));
     }
 
@@ -42,7 +43,7 @@ class QuizController extends Controller
      */
     public function show(string $id)
     {
-        //
+        
     }
 
     /**
@@ -50,15 +51,21 @@ class QuizController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $quiz = Quiz::find($id) ?? abort(404, 'Quiz bulunamadı');
+
+        return view('admin.quiz.edit', compact('quiz')); 
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(QuizUpdateRequest $request, string $id)
     {
-        //
+        $quiz = Quiz::find($id) ?? abort(404, 'Quiz bulunamadı');
+
+        $quiz->update($request->post());
+
+        return redirect()->route('quizzes.index')->withSuccess('Quiz güncelleme işlemi başarılı.');
     }
 
     /**
