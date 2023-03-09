@@ -4,7 +4,10 @@
     <div class="card">
         <div class="card-body">
             
-            <a href="{{  route( 'questions.create' , $quiz->id) }}" class="btn btn-sm btn-primary">Soru Oluştur <i class="bi bi-plus"></i></a>
+            <h5>
+              <a href="{{  route( 'quizzes.index') }}" class="btn btn-sm btn-secondary">Quizlere git</a>
+              <a href="{{  route( 'questions.create' , $quiz->id) }}" class="btn btn-sm btn-primary float-right">Soru Oluştur <i class="bi bi-plus"></i></a>
+            </h5>
             
             
             <table class="table">

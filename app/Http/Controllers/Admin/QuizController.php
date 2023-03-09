@@ -17,7 +17,7 @@ class QuizController extends Controller
      */
     public function index()
     {
-        $quizzes = Quiz::orderBy('id', 'desc')->paginate(5);
+        $quizzes = Quiz::orderBy('id', 'desc')->withCount('questions')->paginate(5);
         return  view('admin.quiz.list', compact('quizzes'));
     }
 
@@ -63,6 +63,7 @@ class QuizController extends Controller
     {
         $quiz = Quiz::find($id) ?? abort(404, 'Quiz bulunamadı');
 
+        
         $quiz->update($request->post());
 
         return redirect()->route('quizzes.index')->withSuccess('Quiz güncelleme işlemi başarılı.');
