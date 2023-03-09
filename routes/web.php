@@ -37,5 +37,6 @@ Route::middleware([ 'auth:sanctum', config('jetstream.auth_session'), 'verified'
         Route::get('quizzes/{id}', [QuizController::class, 'destroy'])->whereNumber('id')->name('quizzes.destroy');
         Route::resource('quizzes', QuizController::class);
 
+        Route::get('quiz/{quiz_id}/questions/{id}', [QuestionController::class, 'destroy'])->whereNumber('id')->name('questions.destroy');
         Route::resource('quiz/{quiz_id}/questions', QuestionController::class);
     });

@@ -34,7 +34,7 @@
                     <td>{{ Str::substr($question->correct_answer, -1)}}. cevap</td>
                     <td>
                       <a href="{{ route('questions.edit', [$quiz->id,$question->id]) }}" class="btn btn-sm btn-primary"><i class="bi bi-pencil"></i></a>
-                      <a href="{{ route('quizzes.destroy',[$quiz->id,$question->id]) }}" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></a>
+                      <a href="{{ route('questions.destroy',[$quiz->id,$question->id]) }}" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></a>
                     </td>
                   </tr>
 

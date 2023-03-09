@@ -83,8 +83,10 @@ class QuestionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $quiz_id, string $question_id)
     {
-        //
+       Quiz::find($quiz_id)->questions()->whereId($question_id)->delete();
+
+       return redirect()->route('questions.index', $quiz_id)->withSuccess('Başarılı şekilde kaldırıldı.');
     }
 }
