@@ -24,6 +24,7 @@
                 <tbody>
                   @foreach($quiz->questions as $question)
 
+                  <tr>
                     <td>{{ $question->question }}</td>
                     <td>{{ $question->image }}</td>
                     <td>{{ $question->answer1 }}</td>
@@ -35,7 +36,7 @@
                       <a href="{{ route('quizzes.edit', $question->id) }}" class="btn btn-sm btn-primary"><i class="bi bi-pencil"></i></a>
                       <a href="{{ route('quizzes.destroy', $question->id) }}" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></a>
                     </td>
-
+                  </tr>
 
                   @endforeach
                
