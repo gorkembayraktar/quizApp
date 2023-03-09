@@ -6,6 +6,21 @@
             
             <a href="{{  route( 'quizzes.create' ) }}" class="btn btn-sm btn-primary">Quiz Oluştur <i class="bi bi-plus"></i></a>
             
+            <form action="" method="GET">
+              <div class="form-row">
+                <div class="col-md-2">
+                  <input type="text" value="{{ request()->get('title') }}" placeholder="Quiz adı" name="title" class="form-control">
+                </div>
+                <div class="col-md-2">
+                  <select name="status" id="" class="form-control" onchange="this.form.submit()">
+                    <option value="">Durum Seçimi</option>
+                    <option value="publish" @selected(request()->get('status') == 'publish') >Aktif</option>
+                    <option value="passive" @selected(request()->get('status') == 'passive') >Pasif</option>
+                    <option value="draft" @selected(request()->get('status') == 'draft') >Taslak</option>
+                  </select>
+                </div>
+              </div>
+            </form>
             
             <table class="table">
                 <thead>
@@ -48,7 +63,7 @@
                 </tbody>
               </table>
 
-              {{ $quizzes->links() }}
+              {{ $quizzes->withQueryString()->links() }}
         </div>
     </div>
     
