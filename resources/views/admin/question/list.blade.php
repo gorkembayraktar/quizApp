@@ -26,15 +26,15 @@
 
                   <tr>
                     <td>{{ $question->question }}</td>
-                    <td>{{ $question->image }}</td>
+                    <td>@isset($question->image) <img src='{{ asset($question->image) }}' width='50' /> @endisset </td>
                     <td>{{ $question->answer1 }}</td>
                     <td>{{ $question->answer2 }}</td>
                     <td>{{ $question->answer3 }}</td>
                     <td>{{ $question->answer4 }}</td>
                     <td>{{ Str::substr($question->correct_answer, -1)}}. cevap</td>
                     <td>
-                      <a href="{{ route('quizzes.edit', $question->id) }}" class="btn btn-sm btn-primary"><i class="bi bi-pencil"></i></a>
-                      <a href="{{ route('quizzes.destroy', $question->id) }}" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></a>
+                      <a href="{{ route('questions.edit', [$quiz->id,$question->id]) }}" class="btn btn-sm btn-primary"><i class="bi bi-pencil"></i></a>
+                      <a href="{{ route('quizzes.destroy',[$quiz->id,$question->id]) }}" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></a>
                     </td>
                   </tr>
 

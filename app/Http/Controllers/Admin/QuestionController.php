@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Quiz;
 use Illuminate\Support\Str;
 use App\Http\Requests\QuestionCreateRequest;
+use App\Http\Requests\QuestionUpdateRequest;
 
 class QuestionController extends Controller
 {
@@ -56,17 +57,27 @@ class QuestionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $quiz_id, string $question_id)
     {
-        //
+        $question = Quiz::find($quiz_id)->questions()->whereId($question_id)->first() ?? abort(404, 'Quiz veya soru bulunamadı');
+
+        return view('admin.question.edit', compact('question'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(QuestionUpdateRequest $request, string $quiz_id, string $question_id)
     {
-        //
+        if($request->hasFile('image')){
+            $filename = Str::slug($request->question) . "." . $request->image->extension();
+            $filenameWithUpload = 'uploads/'.$filename;
+            $request->image->move(public_path('uploads'), $filename);
+            $request->merge(['image' => $filenameWithUpload]);
+        }
+        Quiz::find($quiz_id)->questions()->whereId($question_id)->first()->update($request->post());
+
+        return redirect()->route('questions.index', $quiz_id)->withSuccess('Soru Başarılı şekilde güncellendi.');
     }
 
     /**
