@@ -21,10 +21,23 @@ class QuizFactory extends Factory
     public function definition(): array
     {
         $title = $this->faker->sentence(rand(3,7));
-        return [
+        $data = [
             'title' => $title,
             'slug' => Str::slug($title),
             'description' => $this->faker->text(200)
         ];
+
+        $status = ['publish', 'passive', 'draft'];
+
+        $select = $status[rand(0, count($status) - 1)];
+
+        $data['status'] = $select;
+
+        
+        if($select == 'publish'){
+            $data['finished_at'] = date('Y-m-d H:i:s', strtotime('+'.rand(1,10) . ' days'));
+        }
+
+        return $data;
     }
 }
