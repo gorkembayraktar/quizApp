@@ -33,7 +33,7 @@
                       </div>
                 </div>
             </div>
-            <a href="" class="btn btn-primary btn-block">Katıl</a>
+            <a href="{{ route('quiz.join', $quiz->slug) }}" class="btn btn-primary btn-block">Katıl</a>
       </div>
     </div>
     
