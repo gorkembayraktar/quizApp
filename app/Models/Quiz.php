@@ -9,6 +9,8 @@ use Carbon\Carbon;
 use Cviebrock\EloquentSluggable\Sluggable;
 
 
+use Illuminate\Support\Facades\DB;
+
 class Quiz extends Model
 {
     use Sluggable;
@@ -20,7 +22,7 @@ class Quiz extends Model
     protected $dates = ['finished_at'];
 
 
-    protected $appends = ['details'];
+    protected $appends = ['details', 'my_rank'];
 
     public function getFinishedAtAttribute($date){
         return  $date ? Carbon::parse($date) : null;
@@ -37,6 +39,20 @@ class Quiz extends Model
 
     public function results(){
         return $this->hasMany('App\Models\Result');
+    }
+
+    public function getMyRankAttribute(){
+        /** yeni sütun oluşturulması */
+
+        /**
+         * SET @rank = 0;
+            SELECT k.* FROM (SELECT *, @rank := @rank + 1 as rank FROM `results`  ORDER BY point Desc) k WHERE k.user_id = 1 limit 1
+         */
+
+        $user_id = auth()->user()->id;
+        DB::statement('SET @rank := 0');
+        $raw = "SELECT k.* FROM (SELECT *, @rank := @rank + 1 as rank FROM `results`  ORDER BY point Desc) k WHERE k.user_id = $user_id limit 1";
+        return DB::select($raw)[0]->rank;
     }
 
     public function getDetailsAttribute(){

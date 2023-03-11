@@ -8,6 +8,8 @@ use App\Models\Quiz;
 use App\Models\Answer;
 use App\Models\Result;
 
+
+
 class MainController extends Controller
 {
     //

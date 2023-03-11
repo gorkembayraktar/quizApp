@@ -9,6 +9,14 @@
                 <div class="row">
                       <div class="col-md-4">
                         <ul class="list-group">
+
+                          @if($quiz->my_rank)
+                          <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Sıralama
+                            <span class="badge bg-primary rounded-pill">#{{ $quiz->my_rank }}</span>
+                          </li>
+                          @endif
+
                           @if($quiz->my_result)
                           <li class="list-group-item d-flex justify-content-between align-items-center">
                             Puan
