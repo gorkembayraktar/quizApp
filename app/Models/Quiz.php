@@ -51,6 +51,10 @@ class Quiz extends Model
         ];
     }
 
+    public function top10(){
+        return $this->results()->orderByDesc('point')->limit(10);
+    }
+
     /**
      * Return the sluggable configuration array for this model.
      *
