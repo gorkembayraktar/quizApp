@@ -6,10 +6,12 @@
     <div class="card">
       <div class="card-body">
             <div class="card-text">
+
+              <h3>PUAN : {{$quiz->my_result->point}}</h3>
              
               @foreach ($quiz->questions as $question)
               
-
+              
               <p>
                 @if($question->correct_answer == $question->my_answer->answer)
                   <i class="bi bi-check-circle-fill text-success"></i>
@@ -62,6 +64,10 @@
                 <label class="form-check-label" for="question4_{{$question->id}}">
                   {{ $question->answer4 }}
                 </label>
+              </div>
+
+              <div class="alert alert-info text-sm">
+                Bu soruya <strong>%{{$question->true_percent}}</strong> oranında doğru cevap verildi.
               </div>
              
               @if(!$loop->last)
