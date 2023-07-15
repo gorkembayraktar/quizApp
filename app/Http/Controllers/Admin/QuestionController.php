@@ -9,6 +9,8 @@ use Illuminate\Support\Str;
 use App\Http\Requests\QuestionCreateRequest;
 use App\Http\Requests\QuestionUpdateRequest;
 
+// test github.dev
+
 class QuestionController extends Controller
 {
     /**
